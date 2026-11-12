@@ -11,7 +11,7 @@ on:
 
 env:
   TAG: ${{ inputs.tag || github.ref_name }} # tag digitada ou tag enviada
-  APP_NAME: intent-clf
+  APP_NAME: intent-clf-frankl
   RESOURCE_GROUP: mlops-2026-2
 
 jobs:
