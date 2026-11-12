@@ -59,10 +59,12 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          allow-no-subscriptions: true
       - name: Atualizar imagem e versão no Container Apps
         run: |
           IMAGE=ghcr.io/franklinluiz2000/mlops-2026-2
           az containerapp update --name "$APP_NAME" --resource-group "$RESOURCE_GROUP" \
+            --subscription "${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
             --image "$IMAGE:$TAG" \
             --set-env-vars APP_VERSION="$TAG"
 
